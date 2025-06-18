@@ -15,14 +15,7 @@ This project contains automated end-to-end tests for Urbanaut event creation usi
 
 ## Installation
 
-1. **Clone this repository** (or download the code):
-
-   ```sh
-   git clone <your-repo-url>
-   cd UN-1
-   ```
-
-2. **Install dependencies**:
+**Install dependencies**:
 
    ```sh
    npm install
