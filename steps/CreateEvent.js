@@ -1,29 +1,3 @@
-// const faker = require('faker');
-// class CreateEvent {
-//   async run(I) {
-//     I.amOnPage('/list-your-experience-online/dashboard/event');
-//     I.waitForElement('#create', 20);
-//     I.click('#create');
-//     I.waitForElement('#spot-name', 20);
-//     const EventName = 'Chetan test ' + faker.random.word(2);
-//     I.fillField('#spot-name', EventName);
-
-//     // Fill location
-//     I.click('#location');
-//     I.type('pune', { delay: 500 });
-//     I.wait(6);
-//     I.pressKey('ArrowDown', { delay: 400 });
-//     I.pressKey('Enter', { delay: 400 });
-//     I.wait(3);
-//     I.click('//*[@id="location-save"]');
-//     //here check if ".ng-invalid .error" is present then redo all from fill location till '.ng-valid .ng-touched" is visible at this step
-//     I.waitForElement('.addLink', 20);
-//     I.seeElement('.addLink');
-//     I.wait(2);
-//   }
-// }
-// module.exports = new CreateEvent();
-
 const faker = require('faker');
 class CreateEvent {
   async run(I) {
@@ -58,7 +32,13 @@ class CreateEvent {
     }
     if (!locationSet) throw new Error('Location could not be set after 3 attempts');
 
+    // Assertion: Check if the add session button is visible
     I.seeElement('.addLink');
+    // Assertion: Check if the event name is filled correctly
+    I.seeInField('#spot-name', EventName);
+
+    // Summary log
+    console.log(`Event "${EventName}" created and location set successfully!`);
   }
 }
 module.exports = new CreateEvent();

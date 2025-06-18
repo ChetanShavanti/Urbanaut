@@ -9,7 +9,14 @@ class Login {
     I.fillField("//input[@id='login-password']", "Xyz@1234");
     I.click("//*[contains(text(),'Sign in')]");
     I.waitForElement("//*[contains(text(),'Instant bookings, fixed dates and times.')]", 20);
-    console.log('Logged in successfully!');
+
+    // Assertions
+    I.seeElement("//*[contains(text(),'Instant bookings, fixed dates and times.')]");
+    I.see("Instant bookings, fixed dates and times.");
+    I.seeInCurrentUrl('/list-your-experience-online/dashboard');
+
+    // Summary log
+    console.log('Login successful and dashboard loaded!');
   }
 }
 module.exports = new Login();
